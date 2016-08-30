@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Date Wheel View Controller-->
@@ -17,26 +18,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="I5u-02-vuv">
-                                <rect key="frame" x="0.0" y="72" width="600" height="216"/>
+                            <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="I5u-02-vuv">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="378"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="378" id="0VI-ey-eJG"/>
+                                </constraints>
                             </pickerView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWQ-gs-cWy">
-                                <rect key="frame" x="172" y="331" width="256" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWQ-gs-cWy">
+                                <rect key="frame" x="172" y="495" width="256" height="38"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="256" id="8qS-Zj-8CF"/>
+                                    <constraint firstAttribute="height" constant="38" id="xqg-Wc-s06"/>
+                                </constraints>
                                 <state key="normal" title="Randomize"/>
                                 <connections>
                                     <action selector="randomizeButtonTapped:" destination="CB0-e6-7gA" eventType="touchUpInside" id="MmH-WG-ztI"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4Y-8y-gc7">
-                                <rect key="frame" x="223" y="399" width="154" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4Y-8y-gc7">
+                                <rect key="frame" x="223" y="550" width="154" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="154" id="90H-wJ-LVy"/>
+                                </constraints>
                                 <state key="normal" title="Locations Near Me"/>
                                 <connections>
                                     <action selector="locationsButtonTapped:" destination="CB0-e6-7gA" eventType="touchUpInside" id="sSN-N4-Nfq"/>
-                                    <segue destination="WHo-RT-ENM" kind="modal" id="X8J-Lj-hWY"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="M4Y-8y-gc7" firstAttribute="top" secondItem="CWQ-gs-cWy" secondAttribute="bottom" constant="17" id="15x-TR-z6i"/>
+                            <constraint firstItem="CWQ-gs-cWy" firstAttribute="centerX" secondItem="auK-YL-CCb" secondAttribute="centerX" id="28M-wy-2PC"/>
+                            <constraint firstItem="CWQ-gs-cWy" firstAttribute="centerX" secondItem="M4Y-8y-gc7" secondAttribute="centerX" id="Inr-Gl-WUd"/>
+                            <constraint firstItem="I5u-02-vuv" firstAttribute="leading" secondItem="auK-YL-CCb" secondAttribute="leading" id="bM3-JN-8Zl"/>
+                            <constraint firstItem="I5u-02-vuv" firstAttribute="top" secondItem="auK-YL-CCb" secondAttribute="top" id="jeZ-y3-dOn"/>
+                            <constraint firstAttribute="bottom" secondItem="M4Y-8y-gc7" secondAttribute="bottom" constant="20" symbolic="YES" id="kND-PT-0bA"/>
+                            <constraint firstItem="CWQ-gs-cWy" firstAttribute="centerX" secondItem="I5u-02-vuv" secondAttribute="centerX" id="s5A-J4-0t0"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="XB1-AP-FvI"/>
                     <connections>
@@ -80,33 +99,46 @@
                                     <constraint firstAttribute="width" constant="600" id="qPk-Mh-uvK"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="77" id="zp6-V6-LQo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="77" id="zp6-V6-LQo" customClass="LocationCell" customModule="The_Wheel_Of_Dates" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="600" height="77"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zp6-V6-LQo" id="k4w-TR-f88">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-er-mHl">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yfs-er-mHl">
                                                     <rect key="frame" x="8" y="8" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukC-K8-gbs">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukC-K8-gbs">
                                                     <rect key="frame" x="8" y="27" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dh-9E-HF5">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Dh-9E-HF5">
                                                     <rect key="frame" x="8" y="47" width="42" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstItem="ukC-K8-gbs" firstAttribute="leading" secondItem="8Dh-9E-HF5" secondAttribute="leading" id="8Ap-mW-VJx"/>
+                                                <constraint firstItem="8Dh-9E-HF5" firstAttribute="bottom" secondItem="k4w-TR-f88" secondAttribute="bottomMargin" id="9g9-Jo-6xr"/>
+                                                <constraint firstItem="ukC-K8-gbs" firstAttribute="centerY" secondItem="k4w-TR-f88" secondAttribute="centerY" id="Bab-Sk-dG5"/>
+                                                <constraint firstItem="yfs-er-mHl" firstAttribute="top" secondItem="k4w-TR-f88" secondAttribute="topMargin" id="NWt-N7-gdu"/>
+                                                <constraint firstItem="yfs-er-mHl" firstAttribute="leading" secondItem="k4w-TR-f88" secondAttribute="leadingMargin" id="PEa-FQ-Lzn"/>
+                                                <constraint firstItem="yfs-er-mHl" firstAttribute="leading" secondItem="ukC-K8-gbs" secondAttribute="leading" id="aaP-Te-fmm"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="locationAddress" destination="ukC-K8-gbs" id="8qs-tC-cag"/>
+                                            <outlet property="locationName" destination="yfs-er-mHl" id="fD1-EW-ObO"/>
+                                            <outlet property="locationRating" destination="8Dh-9E-HF5" id="NEb-Uo-imf"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
@@ -125,11 +157,6 @@
                     </view>
                     <navigationItem key="navigationItem" title="Title" id="euG-gn-5aE"/>
                     <connections>
-                        <outlet property="locationAddress" destination="ukC-K8-gbs" id="Eqa-We-ka9"/>
-                        <outlet property="locationInfoTableView" destination="zp6-V6-LQo" id="yAp-6Y-eha"/>
-                        <outlet property="locationName" destination="k4w-TR-f88" id="vmx-oQ-lLB"/>
-                        <outlet property="locationRating" destination="8Dh-9E-HF5" id="Lsr-uM-3u7"/>
-                        <outlet property="locationRatiog" destination="8Dh-9E-HF5" id="3hU-Qj-AIG"/>
                         <outlet property="locationsMapOutlet" destination="SqM-SN-nkw" id="9IH-Sh-GWP"/>
                     </connections>
                 </viewController>

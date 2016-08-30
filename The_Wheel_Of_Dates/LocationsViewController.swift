@@ -9,21 +9,25 @@
 import UIKit
 import MapKit
 
+class LocationCell: UITableViewCell {
+    @IBOutlet weak var locationName: UILabel!
+    @IBOutlet weak var locationAddress: UILabel!
+    @IBOutlet weak var locationRating: UILabel!
+}
+
 class LocationsViewController: UIViewController {
 
     @IBOutlet weak var locationsMapOutlet: MKMapView!
     @IBOutlet weak var locationInfoTableView: UITableViewCell!
     
-    @IBOutlet weak var locationName: UIView!
-    @IBOutlet weak var locationAddress: UILabel!
-    @IBOutlet weak var locationRating: UILabel!
+
     
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        
     }
 
     /*
