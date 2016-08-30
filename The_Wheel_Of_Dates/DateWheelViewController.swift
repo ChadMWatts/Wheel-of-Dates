@@ -11,6 +11,7 @@ import UIKit
 class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var DateListPicker: UIPickerView!
+    @IBOutlet weak var BackroundImage: UIImageView!
     
     struct Picker {
         
@@ -30,7 +31,7 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let paintballing = Picker(image: UIImage(named: "Paintballing"))
         let lazerTag = Picker(image: UIImage(named: "LazerTag"))
         let dinner = Picker(image: UIImage(named: "Dinner"))
-        let picnic = Picker(image: UIImage(named: "picnic"))
+        let picnic = Picker(image: UIImage(named: "Picnic"))
         let waterPark = Picker(image: UIImage(named: "WaterPark"))
         let miniGolf = Picker(image: UIImage(named: "MiniGolf"))
         let goKarts = Picker(image: UIImage(named: "GoKarts"))
