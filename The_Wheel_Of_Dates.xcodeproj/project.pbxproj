@@ -16,6 +16,7 @@
 		4CB4689B1D75F726008D2E7B /* DateWheelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4689A1D75F726008D2E7B /* DateWheelViewController.swift */; };
 		4CB4689D1D75F73A008D2E7B /* LocationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4689C1D75F73A008D2E7B /* LocationsViewController.swift */; };
 		4CB4689F1D75F7AC008D2E7B /* DatesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB4689E1D75F7AC008D2E7B /* DatesController.swift */; };
+		4CB469061D77815A008D2E7B /* SearchLocationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4CB469051D77815A008D2E7B /* SearchLocationTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		4CB4689A1D75F726008D2E7B /* DateWheelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateWheelViewController.swift; sourceTree = "<group>"; };
 		4CB4689C1D75F73A008D2E7B /* LocationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationsViewController.swift; sourceTree = "<group>"; };
 		4CB4689E1D75F7AC008D2E7B /* DatesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesController.swift; sourceTree = "<group>"; };
+		4CB469051D77815A008D2E7B /* SearchLocationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 			children = (
 				4CB4689A1D75F726008D2E7B /* DateWheelViewController.swift */,
 				4CB4689C1D75F73A008D2E7B /* LocationsViewController.swift */,
+				4CB469051D77815A008D2E7B /* SearchLocationTableViewController.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -172,6 +175,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4CB469061D77815A008D2E7B /* SearchLocationTableViewController.swift in Sources */,
 				4CB467E61D708B8F008D2E7B /* AppDelegate.swift in Sources */,
 				4CB468961D75E815008D2E7B /* Dates.swift in Sources */,
 				4CB4689F1D75F7AC008D2E7B /* DatesController.swift in Sources */,
