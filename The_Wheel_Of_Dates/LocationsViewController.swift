@@ -22,6 +22,8 @@ class LocationsViewController: UIViewController {
     
     var searchResults: UISearchController? = nil
     let locationManager = CLLocationManager()
+    var selectedPin: MKPlacemark? = nil
+    var mapView = MKMapView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +32,7 @@ class LocationsViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
+        
         
         let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("locationSearchTable") as! SearchLocationTableViewController
         searchResults = UISearchController(searchResultsController: locationSearchTable)
@@ -42,6 +45,9 @@ class LocationsViewController: UIViewController {
         searchBar?.sizeToFit()
         searchBar?.placeholder = "Find Date Location Near Me"
         navigationItem.titleView = searchResults?.searchBar
+        
+        locationSearchTable.mapView = mapView
+        locationSearchTable.handleMapSearchDelegate = self
     }
 
     /*
@@ -55,6 +61,14 @@ class LocationsViewController: UIViewController {
     */
 
 }
+
+// Mark: - Delegate
+
+protocol HandleMapSearch {
+    func dropPinZoomIn(placemark: MKPlacemark)
+}
+
+// Mark: - Locations Extention
 
 extension LocationsViewController: CLLocationManagerDelegate {
     
@@ -76,6 +90,30 @@ extension LocationsViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("error: (error)")
+    }
+}
+
+// Mark: - Map search Handler for pin drop
+
+extension LocationsViewController: HandleMapSearch {
+    
+    func dropPinZoomIn(placemark: MKPlacemark) {
+        
+        selectedPin = placemark
+        mapView.removeAnnotations(mapView.annotations)
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = placemark.coordinate
+        annotation.title = placemark.name
+        
+        if let city = placemark.locality,
+            let state = placemark.administrativeArea {
+            annotation.subtitle = "(City) (State)"
+        }
+        
+        mapView.addAnnotation(annotation)
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegionMake(placemark.coordinate, span)
+        mapView.setRegion(region, animated: true)
     }
 }
 
