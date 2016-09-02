@@ -79,10 +79,10 @@
             </objects>
             <point key="canvasLocation" x="1827" y="324"/>
         </scene>
-        <!--Title-->
+        <!--Locations-->
         <scene sceneID="oCw-mg-G3n">
             <objects>
-                <viewController id="WHo-RT-ENM" customClass="LocationsViewController" customModule="The_Wheel_Of_Dates" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Locations" id="WHo-RT-ENM" customClass="LocationsViewController" customModule="The_Wheel_Of_Dates" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SJm-BZ-Jvt"/>
                         <viewControllerLayoutGuide type="bottom" id="QyN-vz-TlL"/>

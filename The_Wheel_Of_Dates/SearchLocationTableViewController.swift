@@ -82,6 +82,18 @@ extension SearchLocationTableViewController {
         return cell
     }
 }
+
+// Mark: - placemark for selected destination
+
+extension SearchLocationTableViewController {
+    
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        let selectedItem = matchingItems[indexPath.row].placemark
+        handleMapSearchDelegate?.dropPinZoomIn(selectedItem)
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+}
  
 
 
