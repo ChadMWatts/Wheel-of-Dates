@@ -9,19 +9,14 @@
 import UIKit
 import MapKit
 
-class SearchLocationTableViewController: UITableViewController, UISearchControllerDelegate {
+class LocationTableSearch: UITableViewController, UISearchControllerDelegate {
+    
+    
     
     var matchingItems:[MKMapItem] = []
-    var mapView: MKMapView? = nil
-    var handleMapSearchDelegate: HandleMapSearch? = nil
-    
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
+    var mapView: MKMapView?
+    weak var handleMapSearchDelegate: HandleMapSearch?
 
-    }
-    
     func sortAddress(sortedItem: MKPlacemark) -> String {
         
         // Creates a space
@@ -49,7 +44,7 @@ class SearchLocationTableViewController: UITableViewController, UISearchControll
     }
 }
 
-extension SearchLocationTableViewController: UISearchResultsUpdating {
+extension LocationTableSearch: UISearchResultsUpdating {
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
         
@@ -67,7 +62,7 @@ extension SearchLocationTableViewController: UISearchResultsUpdating {
     }
 }
 
-extension SearchLocationTableViewController {
+extension LocationTableSearch {
     
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return matchingItems.count
@@ -85,7 +80,7 @@ extension SearchLocationTableViewController {
 
 // Mark: - placemark for selected destination
 
-extension SearchLocationTableViewController {
+extension LocationTableSearch {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         

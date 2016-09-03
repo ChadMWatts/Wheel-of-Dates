@@ -9,22 +9,14 @@
 import UIKit
 import MapKit
 
-class LocationCell: UITableViewCell, UISearchControllerDelegate {
-    @IBOutlet weak var locationName: UILabel!
-    @IBOutlet weak var locationAddress: UILabel!
-    @IBOutlet weak var locationRating: UILabel!
-    
-}
-
 class LocationsViewController: UIViewController {
 
-    @IBOutlet weak var locationsMapOutlet: MKMapView!
-    @IBOutlet weak var locationInfoTableView: UITableViewCell!
+    @IBOutlet weak var mapView: MKMapView!
     
-    var searchResults: UISearchController? = nil
+    var searchResults: UISearchController!
     let locationManager = CLLocationManager()
-    var selectedPin: MKPlacemark? = nil
-    var mapView = MKMapView()
+    var selectedPin: MKPlacemark?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,17 +27,17 @@ class LocationsViewController: UIViewController {
         locationManager.requestLocation()
         
         
-        let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("locationSearchTable") as! SearchLocationTableViewController
+        let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("LocationSearchTable") as! LocationTableSearch
         searchResults = UISearchController(searchResultsController: locationSearchTable)
         searchResults?.searchResultsUpdater = locationSearchTable
         searchResults?.hidesNavigationBarDuringPresentation = false
         searchResults?.dimsBackgroundDuringPresentation = true
         definesPresentationContext = true
-        
-        let searchBar = searchResults?.searchBar
-        searchBar?.sizeToFit()
-        searchBar?.placeholder = "Find Date Location Near Me"
         navigationItem.titleView = searchResults?.searchBar
+        let searchBar = searchResults!.searchBar
+        searchBar.sizeToFit()
+        searchBar.placeholder = "Find Date Location Near Me"
+        
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
@@ -76,7 +68,7 @@ class LocationsViewController: UIViewController {
 
 // Mark: - Delegate
 
-protocol HandleMapSearch {
+protocol HandleMapSearch: class {
     func dropPinZoomIn(placemark: MKPlacemark)
 }
 
@@ -93,10 +85,10 @@ extension LocationsViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if let locations = locations.first {
+        if let location = locations.first {
             let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegion(center: locations.coordinate, span: span)
-            locationsMapOutlet.setRegion(region, animated: true)
+            let region = MKCoordinateRegion(center: location.coordinate, span: span)
+            mapView.setRegion(region, animated: true)
         }
     }
     
@@ -119,7 +111,7 @@ extension LocationsViewController: HandleMapSearch {
         
         if let city = placemark.locality,
             let state = placemark.administrativeArea {
-            annotation.subtitle = "(city) (state)"
+            annotation.subtitle = "\(city) \(state)"
         }
         
         mapView.addAnnotation(annotation)
