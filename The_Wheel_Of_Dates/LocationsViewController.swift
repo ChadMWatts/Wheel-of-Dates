@@ -45,7 +45,7 @@ class LocationsViewController: UIViewController {
     
     func getDirections() {
         
-        if let selectedPin = selectedPin {
+        guard let selectedPin = selectedPin else {return}
             
             let mapItem = MKMapItem(placemark: selectedPin)
             let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
@@ -64,7 +64,7 @@ class LocationsViewController: UIViewController {
     }
     */
 
-}
+
 
 // Mark: - Delegate
 
@@ -85,15 +85,14 @@ extension LocationsViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
-        if let location = locations.first {
+        guard let location = locations.first else {return}
             let span = MKCoordinateSpanMake(0.05, 0.05)
             let region = MKCoordinateRegion(center: location.coordinate, span: span)
             mapView.setRegion(region, animated: true)
         }
-    }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("error: (error)")
+        print("error: \(error)")
     }
 }
 
@@ -127,20 +126,18 @@ extension LocationsViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
-        if annotation is MKUserLocation {return nil}
+        guard !(annotation is MKUserLocation) else {return nil}
         
         let reuseID = "pin"
-        var pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView
+        guard let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView else {return nil}
         
-        pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseID)
-        pinView?.pinTintColor = UIColor.cyanColor()
-        pinView?.canShowCallout = true
-        
+        pinView.pinTintColor = UIColor.cyanColor()
+        pinView.canShowCallout = true
         let samllSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPointZero, size: samllSquare))
         button.setBackgroundImage(UIImage(named: "GoKarts"), forState: .Normal)
         button.addTarget(self, action: #selector(LocationsViewController.getDirections), forControlEvents: .TouchUpInside)
-        pinView?.leftCalloutAccessoryView = button
+        pinView.leftCalloutAccessoryView = button
         return pinView
     }
 }

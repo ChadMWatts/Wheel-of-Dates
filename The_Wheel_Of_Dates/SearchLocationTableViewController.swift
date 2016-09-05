@@ -20,28 +20,32 @@ class LocationTableSearch: UITableViewController, UISearchControllerDelegate {
     func sortAddress(sortedItem: MKPlacemark) -> String {
         
         // Creates a space
-        let firstSpace = (sortedItem.subThoroughfare != nil && sortedItem.subThoroughfare != nil) ? " " : ""
-        let comma = (sortedItem.subThoroughfare != nil || sortedItem.subThoroughfare != nil) && (sortedItem.subAdministrativeArea != nil || sortedItem.subAdministrativeArea != nil) ? " " : ""
-        let secondSpace = (sortedItem.subAdministrativeArea != nil && sortedItem.subAdministrativeArea != nil) ? " " : ""
+        let firstSpace = (sortedItem.subThoroughfare != nil &&
+            sortedItem.thoroughfare != nil) ? " " : ""
+        
+        let comma = (sortedItem.subThoroughfare != nil || sortedItem.thoroughfare != nil) && (sortedItem.subAdministrativeArea != nil || sortedItem.administrativeArea != nil) ? " " : ""
+        
+        let secondSpace = (sortedItem.subAdministrativeArea != nil &&
+            sortedItem.administrativeArea != nil) ? " " : ""
+        
         let adressLine = String(format: "%@%@%@%@%@%@%@",
+                                
                                 sortedItem.subThoroughfare ?? "",
                                 firstSpace,
-                                sortedItem.subThoroughfare ?? "",
+                                
+                                sortedItem.locality ?? "",
                                 secondSpace,
-                                sortedItem.subThoroughfare ?? "",
+                                
+                                sortedItem.thoroughfare ?? "",
                                 comma,
-                                sortedItem.subAdministrativeArea ?? "")
+                                
+                                sortedItem.administrativeArea ?? "")
                                 return adressLine
         
         
     }
 
-    // MARK: - Table view data source
-
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
+    
 }
 
 extension LocationTableSearch: UISearchResultsUpdating {
@@ -50,10 +54,13 @@ extension LocationTableSearch: UISearchResultsUpdating {
         
         guard let mapView = mapView,
             searchBarText = searchController.searchBar.text else {return}
+        
         let request = MKLocalSearchRequest()
         request.naturalLanguageQuery = searchBarText
         request.region = mapView.region
+        
         let search = MKLocalSearch(request: request)
+        
         search.startWithCompletionHandler { response, _ in
             guard let response = response else {return}
             self.matchingItems = response.mapItems
@@ -64,12 +71,14 @@ extension LocationTableSearch: UISearchResultsUpdating {
 
 extension LocationTableSearch {
     
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    // MARK: - Table view data source
+    
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return matchingItems.count
     }
  
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("searchCelll")!
+        let cell = tableView.dequeueReusableCellWithIdentifier("searchCell")!
         
         let selectedItem = matchingItems[indexPath.row].placemark
         cell.textLabel?.text = selectedItem.name
