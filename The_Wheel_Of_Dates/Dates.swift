@@ -10,26 +10,38 @@
 
 import Foundation
 
-enum Dates: String {
+    enum DateTypes: String {
+        
+        case movies = "Movies"
+        case bowling = "Bowling"
+        case hiking = "hiking"
+        case trampolineHouse = "Trampoling House"
+        case paintballing = "Paintballing"
+        case lazerTag = "Lazer Tag"
+        case goToDinner = "Dinner"
+        case picnic = "Picnic"
+        case waterPark = "Water Park"
+        case themePark = "Theme Park"
+        case miniGolfing = "Mini Golfing"
+        case goKarts = "Go Carts"
+        case iceSkating = "Ice Skating"
+        case rollerRink = "Roller Skating Rink"
+        case goToBuildABear = "Go to build a Bear Work Shop"
+        case playBoardGames = "Board games"
+        case biking = "Biking"
+        
+        static var allDates = [movies, bowling, hiking, trampolineHouse, paintballing, lazerTag, goToDinner, picnic, waterPark, themePark, miniGolfing, goKarts, iceSkating, rollerRink, goToBuildABear, playBoardGames, biking]
     
-    case movies = "Movies"
-    case bowling = "Bowling"
-    case hiking = "hiking"
-    case trampolineHouse = "Trampoling House"
-    case paintballing = "Paintballing"
-    case lazerTag = "Lazer Tag"
-    case goToDinner = "Dinner"
-    case picnic = "Picnic"
-    case WaterPark = "Water Park"
-    case themePark = "Theme Park"
-    case miniGolfing = "Mini Golfing"
-    case goCarts = "Go Carts"
-    case iceSkateing = "Ice Skating"
-    case rollerRink = "Roller Skating Rink"
-    case goToBuildABear = "Go to build a Bear Work Shop"
-    case playBoardGames = "Board games"
-    case biking = "Biking"
 }
+
+protocol SelectedDateDelegate: class {
+
+    func dateSelected(date: DateTypes)
+}
+
+
+
+
 
 
 

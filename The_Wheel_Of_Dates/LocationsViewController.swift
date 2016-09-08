@@ -9,6 +9,15 @@
 import UIKit
 import MapKit
 
+class LocationCell: UITableViewCell {
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var addressLabel: UILabel!
+    
+    
+    
+}
+
 class LocationsViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
@@ -25,15 +34,18 @@ class LocationsViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.requestLocation()
-        
+        locationManager.startUpdatingLocation()
         
         let locationSearchTable = storyboard!.instantiateViewControllerWithIdentifier("LocationSearchTable") as! LocationTableSearch
+        
         searchResults = UISearchController(searchResultsController: locationSearchTable)
-        searchResults?.searchResultsUpdater = locationSearchTable
-        searchResults?.hidesNavigationBarDuringPresentation = false
-        searchResults?.dimsBackgroundDuringPresentation = true
+        searchResults.searchResultsUpdater = locationSearchTable
+        searchResults.hidesNavigationBarDuringPresentation = false
+        searchResults.dimsBackgroundDuringPresentation = true
+        
         definesPresentationContext = true
         navigationItem.titleView = searchResults?.searchBar
+        
         let searchBar = searchResults!.searchBar
         searchBar.sizeToFit()
         searchBar.placeholder = "Find Date Location Near Me"
@@ -46,13 +58,19 @@ class LocationsViewController: UIViewController {
     func getDirections() {
         
         guard let selectedPin = selectedPin else {return}
-            
+    
             let mapItem = MKMapItem(placemark: selectedPin)
             let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
             mapItem.openInMapsWithLaunchOptions(launchOptions)
             
         }
+    @IBAction func buttton(sender: AnyObject) {
+        
+        getDirections()
     }
+    
+    }
+
 
     /*
     // MARK: - Navigation
@@ -123,7 +141,6 @@ extension LocationsViewController: HandleMapSearch {
 
 extension LocationsViewController: MKMapViewDelegate {
     
-    
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
         guard !(annotation is MKUserLocation) else {return nil}
@@ -133,11 +150,14 @@ extension LocationsViewController: MKMapViewDelegate {
         
         pinView.pinTintColor = UIColor.cyanColor()
         pinView.canShowCallout = true
+        
         let samllSquare = CGSize(width: 30, height: 30)
         let button = UIButton(frame: CGRect(origin: CGPointZero, size: samllSquare))
-        button.setBackgroundImage(UIImage(named: "GoKarts"), forState: .Normal)
+        
+        button.setBackgroundImage(UIImage(named: "car"), forState: .Normal)
         button.addTarget(self, action: #selector(LocationsViewController.getDirections), forControlEvents: .TouchUpInside)
-        pinView.leftCalloutAccessoryView = button
+        pinView.rightCalloutAccessoryView = button
+        
         return pinView
     }
 }

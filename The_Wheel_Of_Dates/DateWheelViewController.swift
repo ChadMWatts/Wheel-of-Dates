@@ -18,6 +18,8 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         var image: UIImage!
     }
     
+   
+    
     var counter = 0
     var images = [Picker]()
 
@@ -38,10 +40,11 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let iceSkating = Picker(image: UIImage(named: "IceSkating"))
         let rollerSkating = Picker(image: UIImage(named: "RollerSkating"))
         let buildABear = Picker(image: UIImage(named: "BuildABear"))
-        let boardGames = Picker(image: UIImage(named: "BoardGames"))
+        let boardGames = Picker(image: UIImage(named: "GameNight"))
         let biking = Picker(image: UIImage(named: "Biking"))
         
         images = [movies, bowling, hiking, trampoline, paintballing, lazerTag, dinner, picnic, waterPark, miniGolf, goKarts, iceSkating, rollerSkating, buildABear, boardGames, biking]
+        
         
         
         DateListPicker.delegate = self
@@ -61,6 +64,7 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        
         //
     }
     

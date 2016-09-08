@@ -23,7 +23,8 @@ class LocationTableSearch: UITableViewController, UISearchControllerDelegate {
         let firstSpace = (sortedItem.subThoroughfare != nil &&
             sortedItem.thoroughfare != nil) ? " " : ""
         
-        let comma = (sortedItem.subThoroughfare != nil || sortedItem.thoroughfare != nil) && (sortedItem.subAdministrativeArea != nil || sortedItem.administrativeArea != nil) ? " " : ""
+        let comma = (sortedItem.subThoroughfare != nil || sortedItem.thoroughfare != nil) &&
+            (sortedItem.subAdministrativeArea != nil || sortedItem.administrativeArea != nil) ? " " : ""
         
         let secondSpace = (sortedItem.subAdministrativeArea != nil &&
             sortedItem.administrativeArea != nil) ? " " : ""
