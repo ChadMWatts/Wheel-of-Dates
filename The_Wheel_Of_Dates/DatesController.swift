@@ -10,7 +10,20 @@ import Foundation
 
 class DatesController {
     
-  //let dateDelegate: SelectedDateDelegate?
+    static let sharedController = DatesController()
+    weak var delegate: SelectedDateDelegate?
+    
+    let dates: [String] = DateTypes.allDates.map { type in
+     
+        let uppercased = type.rawValue.uppercaseString
+        var finishedString = ""
+        
+        for character in uppercased.characters {
+            finishedString += "\(character)"
+        }
+        return finishedString
+        
+    }
     
 }
 

@@ -14,8 +14,6 @@ class LocationCell: UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
     
-    
-    
 }
 
 class LocationsViewController: UIViewController {

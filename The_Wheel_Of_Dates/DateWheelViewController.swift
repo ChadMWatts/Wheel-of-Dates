@@ -13,12 +13,12 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBOutlet weak var DateListPicker: UIPickerView!
     @IBOutlet weak var BackroundImage: UIImageView!
     
+    
+    
     struct Picker {
         
         var image: UIImage!
     }
-    
-   
     
     var counter = 0
     var images = [Picker]()
