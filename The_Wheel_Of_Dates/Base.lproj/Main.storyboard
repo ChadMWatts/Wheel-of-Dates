@@ -20,13 +20,6 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BluredImage" translatesAutoresizingMaskIntoConstraints="NO" id="wvP-wD-YUW">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </imageView>
-                            <pickerView contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="I5u-02-vuv">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="378"/>
-                                <gestureRecognizers/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="378" id="0VI-ey-eJG"/>
-                                </constraints>
-                            </pickerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CWQ-gs-cWy">
                                 <rect key="frame" x="172" y="495" width="256" height="38"/>
                                 <constraints>
@@ -53,6 +46,14 @@
                                     <segue destination="WHo-RT-ENM" kind="show" identifier="toLocations" id="7lb-7R-qzZ"/>
                                 </connections>
                             </button>
+                            <pickerView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="I5u-02-vuv">
+                                <rect key="frame" x="0.0" y="64" width="600" height="378"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="600" id="It4-JZ-woT"/>
+                                    <constraint firstAttribute="height" constant="378" id="V5e-wg-WGV"/>
+                                </constraints>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -63,10 +64,10 @@
                             <constraint firstItem="wvP-wD-YUW" firstAttribute="top" secondItem="auK-YL-CCb" secondAttribute="top" id="P6Q-0b-zKt"/>
                             <constraint firstAttribute="trailing" secondItem="wvP-wD-YUW" secondAttribute="trailing" id="SFZ-oy-rfg"/>
                             <constraint firstItem="wvP-wD-YUW" firstAttribute="leading" secondItem="auK-YL-CCb" secondAttribute="leading" id="aze-zx-60v"/>
-                            <constraint firstItem="I5u-02-vuv" firstAttribute="leading" secondItem="auK-YL-CCb" secondAttribute="leading" id="bM3-JN-8Zl"/>
-                            <constraint firstItem="I5u-02-vuv" firstAttribute="top" secondItem="auK-YL-CCb" secondAttribute="top" id="jeZ-y3-dOn"/>
+                            <constraint firstItem="I5u-02-vuv" firstAttribute="top" secondItem="bQg-yI-XnY" secondAttribute="bottom" id="f8E-9o-mby"/>
+                            <constraint firstItem="I5u-02-vuv" firstAttribute="centerX" secondItem="wvP-wD-YUW" secondAttribute="centerX" id="jL4-a1-MHD"/>
                             <constraint firstAttribute="bottom" secondItem="M4Y-8y-gc7" secondAttribute="bottom" constant="20" symbolic="YES" id="kND-PT-0bA"/>
-                            <constraint firstItem="CWQ-gs-cWy" firstAttribute="centerX" secondItem="I5u-02-vuv" secondAttribute="centerX" id="s5A-J4-0t0"/>
+                            <constraint firstItem="I5u-02-vuv" firstAttribute="leading" secondItem="wvP-wD-YUW" secondAttribute="leading" id="yam-HU-fvl"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="And Tonights Date Is?" id="XB1-AP-FvI"/>

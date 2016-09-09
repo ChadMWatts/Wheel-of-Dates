@@ -26,24 +26,34 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let aquarium = Picker(image: UIImage(named: "Aquarium"))
         let movies = Picker(image: UIImage(named: "Movies"))
         let bowling = Picker(image: UIImage(named: "Bowling"))
+        let play = Picker(image: UIImage(named: "Play"))
         let hiking = Picker(image: UIImage(named: "Hiking"))
         let trampoline = Picker(image: UIImage(named: "Trampoline"))
+        let club = Picker(image: UIImage(named: "Clubing"))
         let paintballing = Picker(image: UIImage(named: "Paintballing"))
         let lazerTag = Picker(image: UIImage(named: "LazerTag"))
         let dinner = Picker(image: UIImage(named: "Dinner"))
-        let picnic = Picker(image: UIImage(named: "Picnic"))
+        let fishing = Picker(image: UIImage(named: "Fish"))
         let waterPark = Picker(image: UIImage(named: "WaterPark"))
+        let casino = Picker(image: UIImage(named: "Casino"))
         let miniGolf = Picker(image: UIImage(named: "MiniGolf"))
         let goKarts = Picker(image: UIImage(named: "GoKarts"))
+        let zoo = Picker(image: UIImage(named: "Zoo"))
         let iceSkating = Picker(image: UIImage(named: "IceSkating"))
+        let bungi = Picker(image: UIImage(named: "Bungi"))
         let rollerSkating = Picker(image: UIImage(named: "RollerSkating"))
         let buildABear = Picker(image: UIImage(named: "BuildABear"))
+        let picnic = Picker(image: UIImage(named: "Picnic"))
         let boardGames = Picker(image: UIImage(named: "GameNight"))
         let biking = Picker(image: UIImage(named: "Biking"))
-        
-        images = [movies, bowling, hiking, trampoline, paintballing, lazerTag, dinner, picnic, waterPark, miniGolf, goKarts, iceSkating, rollerSkating, buildABear, boardGames, biking]
+        let arcade = Picker(image: UIImage(named: "Arcade"))
+        let shooting = Picker(image: UIImage(named: "Shooting"))
+        let skyDiving = Picker(image: UIImage(named: "SkyDiving"))
+                
+        images = [movies, bowling, hiking, trampoline, paintballing, lazerTag, dinner, picnic, waterPark, miniGolf, goKarts, iceSkating, rollerSkating, buildABear, boardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving]
         
         
         

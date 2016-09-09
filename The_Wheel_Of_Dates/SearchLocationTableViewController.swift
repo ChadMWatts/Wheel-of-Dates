@@ -42,8 +42,6 @@ class LocationTableSearch: UITableViewController, UISearchControllerDelegate {
                                 
                                 sortedItem.administrativeArea ?? "")
                                 return adressLine
-        
-        
     }
 
     
