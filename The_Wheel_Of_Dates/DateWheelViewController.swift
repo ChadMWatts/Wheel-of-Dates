@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
+class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, SelectedDateDelegate {
     
     @IBOutlet weak var DateListPicker: UIPickerView!
     @IBOutlet weak var BackroundImage: UIImageView!
@@ -64,9 +64,9 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func randomSpin() {
         
-        let randomDate = random() % images.count
-        DateListPicker.selectRow(randomDate, inComponent: counter, animated: true)
-        self.pickerView(DateListPicker, didSelectRow: randomDate, inComponent: counter)
+        let randomRow = random() % images.count
+        DateListPicker.selectRow(randomRow, inComponent: counter, animated: true)
+        self.pickerView(DateListPicker, didSelectRow: randomRow, inComponent: counter)
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -74,7 +74,6 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        
         //
     }
     
@@ -96,10 +95,16 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBAction func randomizeButtonTapped(sender: AnyObject){
         
-        randomSpin()
+      randomSpin()
+        
     }
     
     @IBAction func locationsButtonTapped(sender: AnyObject) {
+        
+    }
+    
+    func dateSelected(date: DateTypes) {
+        
         
     }
 
