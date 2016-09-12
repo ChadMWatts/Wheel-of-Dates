@@ -74,7 +74,9 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        //
+        
+//        let idea = DateTypes.allDates[row]
+//        DatesController.sharedController.delegate?.dateSelected(idea)
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
@@ -96,7 +98,6 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     @IBAction func randomizeButtonTapped(sender: AnyObject){
         
       randomSpin()
-        
     }
     
     @IBAction func locationsButtonTapped(sender: AnyObject) {
