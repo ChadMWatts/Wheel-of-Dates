@@ -8,12 +8,12 @@
 
 import UIKit
 
-class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource, SelectedDateDelegate {
+class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     @IBOutlet weak var DateListPicker: UIPickerView!
     @IBOutlet weak var BackroundImage: UIImageView!
     
-    
+    weak var delegate: SelectedDateDelegate?
     
     struct Picker {
         
@@ -76,7 +76,7 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
 //        let idea = DateTypes.allDates[row]
-//        DatesController.sharedController.delegate?.dateSelected(idea)
+//        delegate?.dateSelected(idea)
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
@@ -104,10 +104,6 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         
     }
     
-    func dateSelected(date: DateTypes) {
-        
-        
-    }
 
     /*
     // MARK: - Navigation

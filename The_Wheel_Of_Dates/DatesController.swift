@@ -11,7 +11,6 @@ import Foundation
 class DatesController {
     
     static let sharedController = DatesController()
-    weak var delegate: SelectedDateDelegate?
     
     let dates: [String] = DateTypes.allDates.map { type in
      
