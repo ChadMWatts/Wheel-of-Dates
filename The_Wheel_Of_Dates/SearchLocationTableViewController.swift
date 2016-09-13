@@ -16,6 +16,7 @@ class LocationTableSearch: UITableViewController, UISearchControllerDelegate {
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView?
     weak var handleMapSearchDelegate: HandleMapSearch?
+    static let sharedController = LocationTableSearch()
 
     func sortAddress(sortedItem: MKPlacemark) -> String {
         

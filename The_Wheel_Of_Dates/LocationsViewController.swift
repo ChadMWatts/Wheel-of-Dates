@@ -9,20 +9,43 @@
 import UIKit
 import MapKit
 
-class LocationCell: UITableViewCell {
-    
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var addressLabel: UILabel!
-    
-}
+//class LocationCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
+//    
+//    let matchedItems: [MKMapItem] = []
+//    
+//    override func awakeFromNib() {
+//        super.awakeFromNib()
+//    }
+//    
+//    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        
+//        return matchedItems.count
+//    }
+//    
+//    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell")!
+//        
+//        let selectedItem = matchedItems[indexPath.row].placemark
+//        cell.textLabel?.text = selectedItem.name
+//        cell.detailTextLabel?.text = LocationTableSearch.sharedController.sortAddress(selectedItem)
+//        
+//        return cell
+//    }
+//}
 
-class LocationsViewController: UIViewController {
+
+
+
+class LocationsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var locoTableView: UITableView!
+    
     
     var searchResults: UISearchController!
     let locationManager = CLLocationManager()
     var selectedPin: MKPlacemark?
+    let matchedItems: [MKMapItem] = []
     
     
     override func viewDidLoad() {
@@ -51,6 +74,7 @@ class LocationsViewController: UIViewController {
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
+        
     }
     
     func getDirections() {
@@ -65,6 +89,21 @@ class LocationsViewController: UIViewController {
     @IBAction func buttton(sender: AnyObject) {
         
         getDirections()
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return matchedItems.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell")!
+        
+        let selectItem = matchedItems[indexPath.row].placemark
+        cell.textLabel?.text = selectItem.name
+        cell.detailTextLabel?.text = LocationTableSearch.sharedController.sortAddress(selectItem)
+        
+        return cell
     }
     
     }
@@ -90,7 +129,7 @@ protocol HandleMapSearch: class {
 
 // Mark: - Locations Extention
 
-extension LocationsViewController: CLLocationManagerDelegate {
+extension LocationsTableViewController: CLLocationManagerDelegate {
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         
@@ -114,7 +153,7 @@ extension LocationsViewController: CLLocationManagerDelegate {
 
 // Mark: - Map search Handler for pin drop
 
-extension LocationsViewController: HandleMapSearch {
+extension LocationsTableViewController: HandleMapSearch {
     
     func dropPinZoomIn(placemark: MKPlacemark) {
         
@@ -137,7 +176,7 @@ extension LocationsViewController: HandleMapSearch {
     }
 }
 
-extension LocationsViewController: MKMapViewDelegate {
+extension LocationsTableViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
         
@@ -153,7 +192,7 @@ extension LocationsViewController: MKMapViewDelegate {
         let button = UIButton(frame: CGRect(origin: CGPointZero, size: samllSquare))
         
         button.setBackgroundImage(UIImage(named: "car"), forState: .Normal)
-        button.addTarget(self, action: #selector(LocationsViewController.getDirections), forControlEvents: .TouchUpInside)
+        button.addTarget(self, action: #selector(LocationsTableViewController.getDirections), forControlEvents: .TouchUpInside)
         pinView.rightCalloutAccessoryView = button
         
         return pinView

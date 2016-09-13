@@ -26,6 +26,8 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
         let aquarium = Picker(image: UIImage(named: "Aquarium"))
         let movies = Picker(image: UIImage(named: "Movies"))
         let bowling = Picker(image: UIImage(named: "Bowling"))
@@ -62,12 +64,16 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     }
     
+    // MARK: - Random Spin
+    
     func randomSpin() {
         
         let randomRow = random() % images.count
         DateListPicker.selectRow(randomRow, inComponent: counter, animated: true)
         self.pickerView(DateListPicker, didSelectRow: randomRow, inComponent: counter)
     }
+    
+    // MARK: - PickerView
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return images.count
@@ -105,14 +111,17 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     }
     
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "toLocations" {
+            //let locationsVC = segue.destinationViewController as? LocationsTableViewController
+            let testIndex = DateListPicker.selectedRowInComponent(0)
+            let testDate = DatesController.sharedController.dates[testIndex]
+            print(testDate)
+        } 
     }
-    */
 
 }
