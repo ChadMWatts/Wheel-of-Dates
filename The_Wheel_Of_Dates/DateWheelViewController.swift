@@ -25,12 +25,11 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         
         let aquarium = Picker(image: UIImage(named: "Aquarium"))
         let movies = Picker(image: UIImage(named: "Movies"))
         let bowling = Picker(image: UIImage(named: "Bowling"))
+        let themePark = Picker(image: UIImage(named: "ThemePark"))
         let play = Picker(image: UIImage(named: "Play"))
         let hiking = Picker(image: UIImage(named: "Hiking"))
         let trampoline = Picker(image: UIImage(named: "Trampoline"))
@@ -55,7 +54,7 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         let shooting = Picker(image: UIImage(named: "Shooting"))
         let skyDiving = Picker(image: UIImage(named: "SkyDiving"))
                 
-        images = [movies, bowling, hiking, trampoline, paintballing, lazerTag, dinner, picnic, waterPark, miniGolf, goKarts, iceSkating, rollerSkating, buildABear, boardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving]
+        images = [movies, bowling, hiking, trampoline, paintballing, lazerTag, dinner, picnic, waterPark, themePark, miniGolf, goKarts, iceSkating, rollerSkating, buildABear, boardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving]
         
         
         
@@ -118,9 +117,9 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "toLocations" {
             //let locationsVC = segue.destinationViewController as? LocationsTableViewController
-            let testIndex = DateListPicker.selectedRowInComponent(0)
-            let testDate = DatesController.sharedController.dates[testIndex]
-            print(testDate)
+            let dateIndex = DateListPicker.selectedRowInComponent(0)
+            let date = DatesController.sharedController.dates[dateIndex]
+            print(date)
         } 
     }
 
