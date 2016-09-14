@@ -75,6 +75,7 @@ class LocationsTableViewController: UIViewController {
         let searchBar = searchResults!.searchBar
         searchBar.sizeToFit()
         searchBar.text = dates
+        searchBar.autocorrectionType.rawValue
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
@@ -90,7 +91,8 @@ class LocationsTableViewController: UIViewController {
         mapItem.openInMapsWithLaunchOptions(launchOptions)
         
     }
-    @IBAction func buttton(sender: AnyObject) {
+    
+    @IBAction func button(sender: AnyObject) {
         
         getDirections()
     }

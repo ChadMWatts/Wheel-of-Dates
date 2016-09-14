@@ -13,35 +13,39 @@ import Foundation
     enum DateTypes: String {
         
         
-        case movies = "Movies"
-        case bowling = "Bowling"
-        case hiking = "Hiking"
+        case movies = "Movie Theater"
+        case bowling = "Bowling Alleys"
+        case hiking = "Hiking Trails"
         case trampolineHouse = "Trampoline"
-        case paintballing = "Paintballing"
-        case lazerTag = "LazerTag"
-        case goToDinner = "Dinner"
-        case picnic = "Picnic"
+        case paintballing = "Paintball"
+        case lazerTag = "Lazer Tag"
+        case goToDinner = "Restuarnts"
+        case picnic = "Picnic Areas"
         case waterPark = "WaterPark"
         case themePark = "ThemePark"
         case miniGolfing = "MiniGolf"
         case goKarts = "GoKarts"
-        case iceSkating = "IceSkating"
-        case rollerRink = "RollerSkating"
-        case goToBuildABear = "BuildABear"
+        case iceSkating = "Ice Skating Rink"
+        case rollerRink = "Roller Derby"
+        case goToBuildABear = "Build A Bear"
         case playBoardGames = "GameNight"
-        case biking = "Biking"
+        case biking = "Biking Routes"
         case aquarium = "Aquarium"
-        case play = "Play"
-        case club = "Clubing"
+        case play = "Performing Arts"
+        case club = "Club"
         case fishing = "Fishing"
         case casino = "Casino"
         case zoo = "Zoo"
-        case bungi = "Bungi"
+        case bungi = "Bungi Jumping"
         case arcade = "Arcade"
         case shooting = "ShootingRange"
         case skyDiving = "SkyDiving"
+        case horseRace = "Horse Race"
+        case demolitionDerby = "Demolition Derby"
+        case museum = "Museum"
         
-        static var allDates = [movies, bowling, hiking, trampolineHouse, paintballing, lazerTag, goToDinner, picnic, waterPark, themePark, miniGolfing, goKarts, iceSkating, rollerRink, goToBuildABear, playBoardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving]
+        
+        static var allDates = [movies, bowling, hiking, trampolineHouse, paintballing, lazerTag, goToDinner, picnic, waterPark, themePark, miniGolfing, goKarts, iceSkating, rollerRink, goToBuildABear, playBoardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving, horseRace, demolitionDerby]
     
 }
 

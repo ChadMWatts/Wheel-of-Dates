@@ -119,7 +119,7 @@
                     <navigationItem key="navigationItem" title="Locations" id="euG-gn-5aE">
                         <barButtonItem key="rightBarButtonItem" title="Directions" id="xaH-sE-Tr7">
                             <connections>
-                                <action selector="buttton:" destination="WHo-RT-ENM" id="NPy-ul-5C1"/>
+                                <action selector="button:" destination="WHo-RT-ENM" id="OMg-Vt-Aun"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
