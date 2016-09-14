@@ -10,25 +10,25 @@ import UIKit
 import MapKit
 
 //class LocationCell: UITableViewCell, UITableViewDataSource, UITableViewDelegate {
-//    
+//
 //    let matchedItems: [MKMapItem] = []
-//    
+//
 //    override func awakeFromNib() {
 //        super.awakeFromNib()
 //    }
-//    
+//
 //    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        
+//
 //        return matchedItems.count
 //    }
-//    
+//
 //    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
 //        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell")!
-//        
+//
 //        let selectedItem = matchedItems[indexPath.row].placemark
 //        cell.textLabel?.text = selectedItem.name
 //        cell.detailTextLabel?.text = LocationTableSearch.sharedController.sortAddress(selectedItem)
-//        
+//
 //        return cell
 //    }
 //}
@@ -36,8 +36,8 @@ import MapKit
 
 
 
-class LocationsTableViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class LocationsTableViewController: UIViewController {
+    
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var locoTableView: UITableView!
     
@@ -45,7 +45,7 @@ class LocationsTableViewController: UIViewController, UITableViewDelegate, UITab
     var searchResults: UISearchController!
     let locationManager = CLLocationManager()
     var selectedPin: MKPlacemark?
-    let matchedItems: [MKMapItem] = []
+//  let matchedItems: [MKMapItem] = []
     var dates: String?
     
     
@@ -74,8 +74,7 @@ class LocationsTableViewController: UIViewController, UITableViewDelegate, UITab
         
         let searchBar = searchResults!.searchBar
         searchBar.sizeToFit()
-        searchBar.placeholder = "Find Date Location Near Me"
-        
+        searchBar.text = dates
         
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
@@ -85,44 +84,46 @@ class LocationsTableViewController: UIViewController, UITableViewDelegate, UITab
     func getDirections() {
         
         guard let selectedPin = selectedPin else {return}
-    
-            let mapItem = MKMapItem(placemark: selectedPin)
-            let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
-            mapItem.openInMapsWithLaunchOptions(launchOptions)
-            
-        }
+        
+        let mapItem = MKMapItem(placemark: selectedPin)
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey : MKLaunchOptionsDirectionsModeDriving]
+        mapItem.openInMapsWithLaunchOptions(launchOptions)
+        
+    }
     @IBAction func buttton(sender: AnyObject) {
         
         getDirections()
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return matchedItems.count
-    }
+    // MARK: - TableView Required Funcs
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell")!
-        
-        let selectItem = matchedItems[indexPath.row].placemark
-        cell.textLabel?.text = selectItem.name
-        cell.detailTextLabel?.text = LocationTableSearch.sharedController.sortAddress(selectItem)
-        
-        return cell
-    }
+//  func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        
+//        return LocationTableSearch.sharedLocationController.matchingItems.count
+//    }
+//    
+//  func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+//        guard let cell = tableView.dequeueReusableCellWithIdentifier("locationCell") else {return UITableViewCell()}
+//        
+//        let selectItem = LocationTableSearch.sharedLocationController.matchingItems[indexPath.row].placemark
+//        cell.textLabel?.text = selectItem.name
+//        cell.detailTextLabel?.text = LocationTableSearch.sharedController.sortAddress(selectItem)
+//        
+//        return cell
+//    }
     
-    }
+}
 
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+/*
+ // MARK: - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+ // Get the new view controller using segue.destinationViewController.
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 
 
@@ -146,10 +147,10 @@ extension LocationsTableViewController: CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         guard let location = locations.first else {return}
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegion(center: location.coordinate, span: span)
-            mapView.setRegion(region, animated: true)
-        }
+        let span = MKCoordinateSpanMake(0.05, 0.05)
+        let region = MKCoordinateRegion(center: location.coordinate, span: span)
+        mapView.setRegion(region, animated: true)
+    }
     
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
         print("error: \(error)")
@@ -177,7 +178,7 @@ extension LocationsTableViewController: HandleMapSearch {
         let span = MKCoordinateSpanMake(0.05, 0.05)
         let region = MKCoordinateRegionMake(placemark.coordinate, span)
         mapView.setRegion(region, animated: true)
-       
+        
     }
 }
 

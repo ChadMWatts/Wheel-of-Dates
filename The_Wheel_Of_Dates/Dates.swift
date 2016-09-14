@@ -16,7 +16,7 @@ import Foundation
         case movies = "Movies"
         case bowling = "Bowling"
         case hiking = "Hiking"
-        case trampolineHouse = "Trampoling House"
+        case trampolineHouse = "Trampoline"
         case paintballing = "Paintballing"
         case lazerTag = "LazerTag"
         case goToDinner = "Dinner"
@@ -41,7 +41,7 @@ import Foundation
         case shooting = "ShootingRange"
         case skyDiving = "SkyDiving"
         
-        static var allDates = [movies, bowling, hiking, trampolineHouse, paintballing, lazerTag, goToDinner, picnic, waterPark, themePark, miniGolfing, goKarts, iceSkating, rollerRink, goToBuildABear, playBoardGames, biking]
+        static var allDates = [movies, bowling, hiking, trampolineHouse, paintballing, lazerTag, goToDinner, picnic, waterPark, themePark, miniGolfing, goKarts, iceSkating, rollerRink, goToBuildABear, playBoardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving]
     
 }
 

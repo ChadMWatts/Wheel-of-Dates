@@ -11,7 +11,7 @@ import MapKit
 
 class LocationTableSearch: UITableViewController, UISearchControllerDelegate {
     
-    
+    static let sharedLocationController = LocationTableSearch()
     
     var matchingItems:[MKMapItem] = []
     var mapView: MKMapView?

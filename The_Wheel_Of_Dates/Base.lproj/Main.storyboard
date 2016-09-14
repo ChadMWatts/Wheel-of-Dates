@@ -99,64 +99,24 @@
                                 </items>
                             </navigationBar>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" showsUserLocation="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SqM-SN-nkw">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="375"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <connections>
                                     <outlet property="delegate" destination="WHo-RT-ENM" id="Reg-zu-CjF"/>
                                 </connections>
                             </mapView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yUS-a1-Ar3">
-                                <rect key="frame" x="0.0" y="376" width="600" height="224"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="224" id="uTK-ey-8R6"/>
-                                </constraints>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="locationCell" textLabel="FPg-8e-ca4" detailTextLabel="Xo5-6s-0ZI" style="IBUITableViewCellStyleSubtitle" id="YeY-ad-vhR" customClass="LocationCell" customModule="The_Wheel_Of_Dates" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="600" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="YeY-ad-vhR" id="dfP-qE-NVB">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FPg-8e-ca4">
-                                                    <rect key="frame" x="15" y="5" width="32" height="20"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Xo5-6s-0ZI">
-                                                    <rect key="frame" x="15" y="25" width="41" height="14"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="WHo-RT-ENM" id="KPM-sZ-A7U"/>
-                                    <outlet property="delegate" destination="WHo-RT-ENM" id="L4v-8x-lRP"/>
-                                </connections>
-                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailingMargin" secondItem="plL-5z-Ep8" secondAttribute="trailing" constant="-10" id="4QL-p4-t1w"/>
-                            <constraint firstAttribute="trailing" secondItem="yUS-a1-Ar3" secondAttribute="trailing" id="7kU-sz-Dny"/>
-                            <constraint firstItem="SqM-SN-nkw" firstAttribute="top" secondItem="83f-W3-jRr" secondAttribute="top" id="AlP-ey-LHP"/>
-                            <constraint firstItem="yUS-a1-Ar3" firstAttribute="top" secondItem="SqM-SN-nkw" secondAttribute="bottom" constant="1" id="KLX-X3-AzY"/>
-                            <constraint firstItem="SqM-SN-nkw" firstAttribute="top" secondItem="plL-5z-Ep8" secondAttribute="top" id="QFs-pe-YpR"/>
-                            <constraint firstItem="SqM-SN-nkw" firstAttribute="leading" secondItem="yUS-a1-Ar3" secondAttribute="leading" id="dGY-Iz-OIv"/>
-                            <constraint firstItem="SqM-SN-nkw" firstAttribute="trailing" secondItem="yUS-a1-Ar3" secondAttribute="trailing" id="dus-2e-e3n"/>
+                            <constraint firstAttribute="trailing" secondItem="SqM-SN-nkw" secondAttribute="trailing" id="82D-Cm-E10"/>
+                            <constraint firstItem="SqM-SN-nkw" firstAttribute="top" secondItem="83f-W3-jRr" secondAttribute="top" id="byD-wl-4Ca"/>
                             <constraint firstItem="plL-5z-Ep8" firstAttribute="leading" secondItem="83f-W3-jRr" secondAttribute="leadingMargin" constant="-30" id="fy3-RM-Hn1"/>
-                            <constraint firstItem="QyN-vz-TlL" firstAttribute="top" secondItem="yUS-a1-Ar3" secondAttribute="bottom" id="isS-66-lB9"/>
-                            <constraint firstItem="yUS-a1-Ar3" firstAttribute="leading" secondItem="83f-W3-jRr" secondAttribute="leading" id="jUj-4D-MLv"/>
+                            <constraint firstItem="plL-5z-Ep8" firstAttribute="top" secondItem="SqM-SN-nkw" secondAttribute="top" id="j4b-lw-Ch9"/>
+                            <constraint firstItem="SqM-SN-nkw" firstAttribute="leading" secondItem="83f-W3-jRr" secondAttribute="leading" id="nM8-PG-vKD"/>
+                            <constraint firstItem="QyN-vz-TlL" firstAttribute="top" secondItem="SqM-SN-nkw" secondAttribute="bottom" id="pvE-Dt-5fK"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Title" id="euG-gn-5aE">
+                    <navigationItem key="navigationItem" title="Locations" id="euG-gn-5aE">
                         <barButtonItem key="rightBarButtonItem" title="Directions" id="xaH-sE-Tr7">
                             <connections>
                                 <action selector="buttton:" destination="WHo-RT-ENM" id="NPy-ul-5C1"/>
@@ -164,7 +124,6 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="locoTableView" destination="yUS-a1-Ar3" id="4in-Gf-NX4"/>
                         <outlet property="mapView" destination="SqM-SN-nkw" id="tXL-5i-MGy"/>
                     </connections>
                 </viewController>
