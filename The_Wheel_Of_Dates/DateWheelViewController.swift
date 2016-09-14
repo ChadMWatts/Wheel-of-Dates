@@ -22,45 +22,15 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var counter = 0
     var images = [Picker]()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let aquarium = Picker(image: UIImage(named: "Aquarium"))
-        let movies = Picker(image: UIImage(named: "Movies"))
-        let bowling = Picker(image: UIImage(named: "Bowling"))
-        let themePark = Picker(image: UIImage(named: "ThemePark"))
-        let play = Picker(image: UIImage(named: "Play"))
-        let hiking = Picker(image: UIImage(named: "Hiking"))
-        let trampoline = Picker(image: UIImage(named: "Trampoline"))
-        let club = Picker(image: UIImage(named: "Clubing"))
-        let paintballing = Picker(image: UIImage(named: "Paintballing"))
-        let lazerTag = Picker(image: UIImage(named: "LazerTag"))
-        let dinner = Picker(image: UIImage(named: "Dinner"))
-        let fishing = Picker(image: UIImage(named: "Fish"))
-        let waterPark = Picker(image: UIImage(named: "WaterPark"))
-        let casino = Picker(image: UIImage(named: "Casino"))
-        let miniGolf = Picker(image: UIImage(named: "MiniGolf"))
-        let goKarts = Picker(image: UIImage(named: "GoKarts"))
-        let zoo = Picker(image: UIImage(named: "Zoo"))
-        let iceSkating = Picker(image: UIImage(named: "IceSkating"))
-        let bungi = Picker(image: UIImage(named: "Bungi"))
-        let rollerSkating = Picker(image: UIImage(named: "RollerSkating"))
-        let buildABear = Picker(image: UIImage(named: "BuildABear"))
-        let picnic = Picker(image: UIImage(named: "Picnic"))
-        let boardGames = Picker(image: UIImage(named: "GameNight"))
-        let biking = Picker(image: UIImage(named: "Biking"))
-        let arcade = Picker(image: UIImage(named: "Arcade"))
-        let shooting = Picker(image: UIImage(named: "Shooting"))
-        let skyDiving = Picker(image: UIImage(named: "SkyDiving"))
-                
-        images = [movies, bowling, hiking, trampoline, paintballing, lazerTag, dinner, picnic, waterPark, themePark, miniGolf, goKarts, iceSkating, rollerSkating, buildABear, boardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving]
-        
-        
-        
+        for i in DateTypes.allDates {
+            images.append(Picker(image: UIImage(named: i.rawValue)))
+        }
         DateListPicker.delegate = self
         DateListPicker.dataSource = self
-    
     }
     
     // MARK: - Random Spin
@@ -80,8 +50,8 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         
-//        let idea = DateTypes.allDates[row]
-//        delegate?.dateSelected(idea)
+        //        let idea = DateTypes.allDates[row]
+        //        delegate?.dateSelected(idea)
     }
     
     func pickerView(pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusingView view: UIView?) -> UIView {
@@ -102,25 +72,25 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     @IBAction func randomizeButtonTapped(sender: AnyObject){
         
-      randomSpin()
+        randomSpin()
     }
     
     @IBAction func locationsButtonTapped(sender: AnyObject) {
         
     }
     
-
+    
     
     // MARK: - Navigation
-
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let locationsVC = segue.destinationViewController as? LocationsTableViewController
         if segue.identifier == "toLocations" {
-            //let locationsVC = segue.destinationViewController as? LocationsTableViewController
-            let dateIndex = DateListPicker.selectedRowInComponent(0)
+            
+            guard let dateIndex = DateListPicker?.selectedRowInComponent(0) else {return}
             let date = DatesController.sharedController.dates[dateIndex]
-            print(date)
-        } 
+            locationsVC?.dates = date
+        }
     }
-
 }

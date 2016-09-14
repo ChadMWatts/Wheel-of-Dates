@@ -46,10 +46,15 @@ class LocationsTableViewController: UIViewController, UITableViewDelegate, UITab
     let locationManager = CLLocationManager()
     var selectedPin: MKPlacemark?
     let matchedItems: [MKMapItem] = []
+    var dates: String?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if let dates = dates {
+            print(dates)
+        }
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest

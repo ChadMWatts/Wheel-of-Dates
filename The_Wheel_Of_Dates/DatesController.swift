@@ -12,7 +12,7 @@ class DatesController {
     
     static let sharedController = DatesController()
     
-    let dates: [String] = DateTypes.allDates.map { type in
+    var dates: [String] = DateTypes.allDates.map { type in
      
         let uppercased = type.rawValue.uppercaseString
         var finishedString = ""
