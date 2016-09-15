@@ -80,7 +80,6 @@ class LocationsTableViewController: UIViewController {
         searchBar.text = dates
         searchBar.autocorrectionType.rawValue
         
-        
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
         
@@ -185,7 +184,7 @@ extension LocationsTableViewController: HandleMapSearch {
         annotation.coordinate = placemark.coordinate
         annotation.title = placemark.name
         
-        if let city = placemark.locality,
+        if let city = placemark.locality, 
             let state = placemark.administrativeArea {
             annotation.subtitle = "\(city) \(state)"
         }
