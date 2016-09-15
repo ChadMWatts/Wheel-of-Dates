@@ -37,9 +37,9 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     func randomSpin() {
         
-        let randomRow = random() % images.count
-        DateListPicker.selectRow(randomRow, inComponent: counter, animated: true)
-        self.pickerView(DateListPicker, didSelectRow: randomRow, inComponent: counter)
+        let randomRow = arc4random_uniform(UInt32(images.count))
+        DateListPicker.selectRow(Int(randomRow), inComponent: counter, animated: true)
+        self.pickerView(DateListPicker, didSelectRow: Int(randomRow), inComponent: counter)
     }
     
     // MARK: - PickerView
