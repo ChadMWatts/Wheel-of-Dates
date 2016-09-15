@@ -45,7 +45,8 @@ class LocationsTableViewController: UIViewController {
     var searchResults: UISearchController!
     let locationManager = CLLocationManager()
     var selectedPin: MKPlacemark?
-//  let matchedItems: [MKMapItem] = []
+//    var searchController = UISearchController()
+    
     var dates: String?
     
     
@@ -55,6 +56,7 @@ class LocationsTableViewController: UIViewController {
         if let dates = dates {
             print(dates)
         }
+        
         
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -72,14 +74,25 @@ class LocationsTableViewController: UIViewController {
         definesPresentationContext = true
         navigationItem.titleView = searchResults?.searchBar
         
+        
         let searchBar = searchResults!.searchBar
         searchBar.sizeToFit()
         searchBar.text = dates
         searchBar.autocorrectionType.rawValue
         
+        
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let seconds = Int64(1.5 * Double(NSEC_PER_SEC))
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds), dispatch_get_main_queue()) {
+            self.searchResults.searchBar.becomeFirstResponder()
+        }
+
     }
     
     func getDirections() {
@@ -91,6 +104,7 @@ class LocationsTableViewController: UIViewController {
         mapItem.openInMapsWithLaunchOptions(launchOptions)
         
     }
+ 
     
     @IBAction func button(sender: AnyObject) {
         

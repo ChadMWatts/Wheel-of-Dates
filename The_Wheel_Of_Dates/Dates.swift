@@ -12,7 +12,7 @@ import Foundation
 
     enum DateTypes: String {
         
-        
+        case picnic = "Picnic Areas"
         case movies = "Movie Theater"
         case bowling = "Bowling Alleys"
         case hiking = "Hiking Trails"
@@ -20,7 +20,6 @@ import Foundation
         case paintballing = "Paintball"
         case lazerTag = "Lazer Tag"
         case goToDinner = "Restuarnts"
-        case picnic = "Picnic Areas"
         case waterPark = "WaterPark"
         case themePark = "ThemePark"
         case miniGolfing = "MiniGolf"
@@ -43,7 +42,10 @@ import Foundation
         case horseRace = "Horse Race"
         case demolitionDerby = "Demolition Derby"
         case museum = "Museum"
-        
+        case animalShelter = "Animal Shelter"
+        case scavengerHunt = "Scavenger Hunt"
+        case getOutGames = "Escape The Room"
+        case visistTheElder = "Senior Citizen Center"
         
         static var allDates = [movies, bowling, hiking, trampolineHouse, paintballing, lazerTag, goToDinner, picnic, waterPark, themePark, miniGolfing, goKarts, iceSkating, rollerRink, goToBuildABear, playBoardGames, biking, aquarium, play, club, fishing, casino, zoo, bungi, arcade, shooting, skyDiving, horseRace, demolitionDerby]
     
