@@ -14,7 +14,7 @@ class DatesController {
     
     var dates: [String] = DateTypes.allDates.map { type in
      
-        let uppercased = type.rawValue.uppercaseString
+        let uppercased = type.rawValue.lowercaseString
         var finishedString = ""
         
         for character in uppercased.characters {

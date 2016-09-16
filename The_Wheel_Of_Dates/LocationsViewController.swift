@@ -83,15 +83,17 @@ class LocationsTableViewController: UIViewController {
         locationSearchTable.mapView = mapView
         locationSearchTable.handleMapSearchDelegate = self
         
+        self.navigationController?.navigationItem.backBarButtonItem?.tintColor = UIColor.blackColor()
+        
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         let seconds = Int64(1.0 * Double(NSEC_PER_SEC))
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, seconds), dispatch_get_main_queue()) {
             self.searchResults.searchBar.becomeFirstResponder()
         }
-
     }
     
     func getDirections() {
@@ -128,19 +130,6 @@ class LocationsTableViewController: UIViewController {
 //    }
     
 }
-
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
- // Get the new view controller using segue.destinationViewController.
- // Pass the selected object to the new view controller.
- }
- */
-
-
 
 // Mark: - Delegate
 
@@ -197,6 +186,8 @@ extension LocationsTableViewController: HandleMapSearch {
     }
 }
 
+// MARK: - MapView Delegate
+
 extension LocationsTableViewController: MKMapViewDelegate {
     
     func mapView(mapView: MKMapView, viewForAnnotation annotation: MKAnnotation) -> MKAnnotationView? {
@@ -206,7 +197,7 @@ extension LocationsTableViewController: MKMapViewDelegate {
         let reuseID = "pin"
         guard let pinView = mapView.dequeueReusableAnnotationViewWithIdentifier(reuseID) as? MKPinAnnotationView else {return nil}
         
-        pinView.pinTintColor = UIColor.cyanColor()
+        pinView.pinTintColor = UIColor.blackColor()
         pinView.canShowCallout = true
         
         let samllSquare = CGSize(width: 30, height: 30)

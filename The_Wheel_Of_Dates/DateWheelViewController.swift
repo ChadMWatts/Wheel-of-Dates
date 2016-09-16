@@ -22,6 +22,9 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
     
     var counter = 0
     var images = [Picker]()
+
+    
+    // MARK: - Date Images
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,8 @@ class DateWheelViewController: UIViewController, UIPickerViewDelegate, UIPickerV
         }
         DateListPicker.delegate = self
         DateListPicker.dataSource = self
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
     }
     
     // MARK: - Random Spin
